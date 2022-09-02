@@ -1,0 +1,120 @@
+<div class="container">
+    <form [formGroup]="addUser" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="email" class="control-label required">Email address</label>
+                    <input type="email" class="form-control" formControlName="email" id="email"
+                        placeholder="Enter email" required>
+                    <div id="emailHelp" style="color:red;" class="form-text"
+                        *ngIf="email && email.invalid && email.dirty">Name is invalid</div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" formControlName="username" id="username"
+                        placeholder="Enter username" required>
+                    <div id="emailHelp" style="color:red;" class="form-text"
+                        *ngIf="username && username.invalid && username.dirty">Username is
+                        invalid
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password" id="password"
+                    placeholder="Password" required>
+                <div id="emailHelp" style="color:red;" class="form-text"
+                    *ngIf="password && password.invalid && password.dirty">Password is
+                    at
+                    least 5 character
+                </div>
+            </div>
+            <app-password-strength-bar [passwordToCheck]="password?.value" [barLabel]="barLabel">
+            </app-password-strength-bar>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" class="form-control" formControlName="confirmpassword" id="confirmpassword"
+                    placeholder="Confirm Password" required>
+                <div id="emailHelp" style="color:red;" class="form-text"
+                    *ngIf="password && password.invalid && password.dirty">Password is
+                    at
+                    least 5 character
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="fullname">Full name</label>
+                    <input type="text" class="form-control" formControlName="fullname" id="fullname"
+                        placeholder="Enter Fullname" required>
+                    <div id="emailHelp" style="color:red;" class="form-text"
+                        *ngIf="fullname && fullname.invalid && fullname.dirty">Full Name
+                        must not
+                        be empty</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="address">Address Line</label>
+                    <input type="text" class="form-control" formControlName="address" id="address"
+                        placeholder="Enter address" required>
+                    <div id="emailHelp" style="color:red;" class="form-text"
+                        *ngIf="address && address.invalid && address.dirty">Address must
+                        not be
+                        empty</div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control" formControlName="dob" id="dob"
+                        placeholder="Enter Date of Birth" required>
+                    <div id="emailHelp" style="color:red;" class="form-text" *ngIf="dob && dob.invalid && dob.dirty">
+                        Date of Birth must not be
+                        empty
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="form-check">
+                        <input class="form-check-input" id="male" value="Male" type="radio" name="gender"
+                            formControlName="gender" checked>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id="female" value="Female" type="radio" name="gender"
+                            formControlName="gender">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id="other" value="Other" type="radio" name="gender"
+                            formControlName="gender">
+                        <label class="form-check-label" for="other">Other</label>
+                    </div>
+                    <div id="emailHelp" style="color:red;" class="form-text"
+                        *ngIf="gender && gender.invalid && gender.dirty">Gender must not
+                        be empty
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button [disabled]="addUser.invalid" type="submit" class="btn btn-primary">Submit</button>
+                <div id="emailHelp" style="color:red;" class="form-text" *ngIf="errormessage.length >= 1">
+                    {{errormessage}}</div>
+            </div>
+        </div>
+    </form>
+</div>
